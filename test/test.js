@@ -7,3 +7,14 @@ describe('Array', function() {
     });
   });
 });
+
+function sum(a, b) {
+    return a + b
+}
+
+// #1 測試檔案內的函式
+describe('Sum', function() {
+    it('sum(1,2) == 3 ?', function() {
+      assert.equal(sum(1, 2), 3);
+    });
+}); 
