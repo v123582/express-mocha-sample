@@ -1,4 +1,5 @@
 var assert = require('assert');
+var helpers = require('../helpers');
 
 describe('Array', function() {
   describe('#indexOf()', function() {
@@ -13,8 +14,16 @@ function sum(a, b) {
 }
 
 // #1 測試檔案內的函式
-describe('Sum', function() {
+describe('Sum #1 測試檔案內的函式', function() {
     it('sum(1,2) == 3 ?', function() {
       assert.equal(sum(1, 2), 3);
+    });
+}); 
+
+
+// #2 測試檔案外的函式
+describe('Sum #2 測試檔案外的函式', function() {
+    it('sum(1,2) == 3 ?', function() {
+      assert.equal(helpers.sum(1, 2), 3);
     });
 }); 
