@@ -58,13 +58,45 @@ var app = require('../app');
 //     });
 // }); 
 
-// #5 模擬登入 - stub
-describe('Sum #5 模擬登入 - stub', function(done) {
+// // #5 模擬登入 - stub
+// describe('Sum #5 模擬登入 - stub', function(done) {
+    
+// 	before(async() => {
+//       this.logined = sinon.stub(
+//         helpers, 'logined'
+//       ).returns(true);
+//     })
+
+//     it('sum(1,2) == 3 ?', function(done) {
+//       	request(app)
+// 	      .get('/sum?a=1&b=2')
+// 	      .end(function(err, res) {
+// 	        assert.equal(res.text, 3);
+// 	        return done();
+// 	      });
+//     });
+//     it('sum(1,2) == 3 ?', function(done) {
+//       	request(app)
+// 	      .get('/sum?a=1&b=2')
+// 	      .end(function(err, res) {
+// 	        assert.equal(res.text, 3);
+// 	        return done();
+// 	      });
+//     });
+
+//     after(async () => {
+//       this.logined.restore();
+//     })
+// });
+
+// #6 模擬登入 - mock
+describe('Sum #6 模擬登入 - mock', function(done) {
     
 	before(async() => {
-      this.logined = sinon.stub(
-        helpers, 'logined'
-      ).returns(true);
+      this.logined = sinon.mock(helpers)
+        .expects('logined')
+        .once()
+        .returns(true);
     })
 
     it('sum(1,2) == 3 ?', function(done) {
@@ -85,6 +117,6 @@ describe('Sum #5 模擬登入 - stub', function(done) {
     });
 
     after(async () => {
-      this.logined.restore();
+      helpers.logined.restore();
     })
 });
