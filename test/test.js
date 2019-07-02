@@ -1,6 +1,7 @@
 var assert = require('assert');
 var fetch = require("node-fetch");
 var request = require('supertest');
+var sinon = require('sinon');
 var helpers = require('../helpers');
 var app = require('../app');
 
@@ -46,7 +47,26 @@ var app = require('../app');
 // }); 
 
 // #4 測試路由 - supertest
-describe('Sum #4 測試路由 - supertest', function(done) {
+// describe('Sum #4 測試路由 - supertest', function(done) {
+//     it('sum(1,2) == 3 ?', function(done) {
+//       	request(app)
+// 	      .get('/sum?a=1&b=2')
+// 	      .end(function(err, res) {
+// 	        assert.equal(res.text, 3);
+// 	        return done();
+// 	      });
+//     });
+// }); 
+
+// #5 模擬登入 - stub
+describe('Sum #5 模擬登入 - stub', function(done) {
+    
+	before(async() => {
+      this.logined = sinon.stub(
+        helpers, 'logined'
+      ).returns(true);
+    })
+
     it('sum(1,2) == 3 ?', function(done) {
       	request(app)
 	      .get('/sum?a=1&b=2')
@@ -55,4 +75,16 @@ describe('Sum #4 測試路由 - supertest', function(done) {
 	        return done();
 	      });
     });
-}); 
+    it('sum(1,2) == 3 ?', function(done) {
+      	request(app)
+	      .get('/sum?a=1&b=2')
+	      .end(function(err, res) {
+	        assert.equal(res.text, 3);
+	        return done();
+	      });
+    });
+
+    after(async () => {
+      this.logined.restore();
+    })
+});
