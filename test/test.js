@@ -89,34 +89,62 @@ var app = require('../app');
 //     })
 // });
 
-// #6 模擬登入 - mock
-describe('Sum #6 模擬登入 - mock', function(done) {
+// // #6 模擬登入 - mock
+// describe('Sum #6 模擬登入 - mock', function(done) {
     
-	before(async() => {
-      this.logined = sinon.mock(helpers)
-        .expects('logined')
-        .once()
-        .returns(true);
-    })
+// 	before(async() => {
+//       this.logined = sinon.mock(helpers)
+//         .expects('logined')
+//         .once()
+//         .returns(true);
+//     })
 
-    it('sum(1,2) == 3 ?', function(done) {
-      	request(app)
+//     it('sum(1,2) == 3 ?', function(done) {
+//       	request(app)
+// 	      .get('/sum?a=1&b=2')
+// 	      .end(function(err, res) {
+// 	        assert.equal(res.text, 3);
+// 	        return done();
+// 	      });
+//     });
+//     it('sum(1,2) == 3 ?', function(done) {
+//       	request(app)
+// 	      .get('/sum?a=1&b=2')
+// 	      .end(function(err, res) {
+// 	        assert.equal(res.text, 3);
+// 	        return done();
+// 	      });
+//     });
+
+//     after(async () => {
+//       helpers.logined.restore();
+//     })
+// });
+
+// #7 模擬登入 - 手動
+describe('Sum #7 模擬登入 - 手動', function(done) {
+    
+    it('sum(1,2) == "" ?', function(done) {
+        request(app)
 	      .get('/sum?a=1&b=2')
+	      .set('Accept', 'application/json')
 	      .end(function(err, res) {
-	        assert.equal(res.text, 3);
+	        assert.equal(res.text, "");
 	        return done();
 	      });
     });
+
     it('sum(1,2) == 3 ?', function(done) {
       	request(app)
-	      .get('/sum?a=1&b=2')
+	      .get('/login')
 	      .end(function(err, res) {
-	        assert.equal(res.text, 3);
-	        return done();
+	        request(app)
+		      .get('/sum?a=1&b=2')
+		      .end(function(err, res) {
+		        assert.equal(res.text, 3);
+		        return done();
+		      });
 	      });
     });
 
-    after(async () => {
-      helpers.logined.restore();
-    })
 });
