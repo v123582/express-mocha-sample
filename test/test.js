@@ -8,7 +8,7 @@ var app = require('../app');
 // describe('Array', function() {
 //   describe('#indexOf()', function() {
 //     it('should return -1 when the value is not present', function() {
-//       assert.equal([1, 2, 3].indexOf(4), -1);
+//       assert.strictEqual([1, 2, 3].indexOf(4), -1);
 //     });
 //   });
 // });
@@ -20,7 +20,7 @@ var app = require('../app');
 // // #1 測試檔案內的函式
 // describe('Sum #1 測試檔案內的函式', function() {
 //     it('sum(1,2) == 3 ?', function() {
-//       assert.equal(sum(1, 2), 3);
+//       assert.strictEqual(sum(1, 2), 3);
 //     });
 // }); 
 
@@ -28,7 +28,7 @@ var app = require('../app');
 // // #2 測試檔案外的函式
 // describe('Sum #2 測試檔案外的函式', function() {
 //     it('sum(1,2) == 3 ?', function() {
-//       assert.equal(helpers.sum(1, 2), 3);
+//       assert.strictEqual(helpers.sum(1, 2), 3);
 //     });
 // }); 
 
@@ -40,7 +40,7 @@ var app = require('../app');
 // 	        return res.json()
 // 	    })
 // 	    .then((res) => {
-// 	        assert.equal(res, 3)
+// 	        assert.strictEqual(res, "3")
 // 	        done()
 // 	    })
 //     });
@@ -52,7 +52,7 @@ var app = require('../app');
 //       	request(app)
 // 	      .get('/sum?a=1&b=2')
 // 	      .end(function(err, res) {
-// 	        assert.equal(res.text, 3);
+// 	        assert.strictEqual(res.text, "3");
 // 	        return done();
 // 	      });
 //     });
@@ -71,7 +71,7 @@ var app = require('../app');
 //       	request(app)
 // 	      .get('/sum?a=1&b=2')
 // 	      .end(function(err, res) {
-// 	        assert.equal(res.text, 3);
+// 	        assert.strictEqual(res.text, "3");
 // 	        return done();
 // 	      });
 //     });
@@ -79,7 +79,7 @@ var app = require('../app');
 //       	request(app)
 // 	      .get('/sum?a=1&b=2')
 // 	      .end(function(err, res) {
-// 	        assert.equal(res.text, 3);
+// 	        assert.strictEqual(res.text, "3");
 // 	        return done();
 // 	      });
 //     });
@@ -103,7 +103,7 @@ var app = require('../app');
 //       	request(app)
 // 	      .get('/sum?a=1&b=2')
 // 	      .end(function(err, res) {
-// 	        assert.equal(res.text, 3);
+// 	        assert.strictEqual(res.text, "3");
 // 	        return done();
 // 	      });
 //     });
@@ -111,7 +111,7 @@ var app = require('../app');
 //       	request(app)
 // 	      .get('/sum?a=1&b=2')
 // 	      .end(function(err, res) {
-// 	        assert.equal(res.text, 3);
+// 	        assert.strictEqual(res.text, "3");
 // 	        return done();
 // 	      });
 //     });
@@ -129,7 +129,7 @@ describe('Sum #7 模擬登入 - 手動', function(done) {
 	      .get('/sum?a=1&b=2')
 	      .set('Accept', 'application/json')
 	      .end(function(err, res) {
-	        assert.equal(res.text, "");
+	        assert.strictEqual(res.text, "");
 	        return done();
 	      });
     });
@@ -141,7 +141,7 @@ describe('Sum #7 模擬登入 - 手動', function(done) {
 	        request(app)
 		      .get('/sum?a=1&b=2')
 		      .end(function(err, res) {
-		        assert.equal(res.text, 3);
+		        assert.strictEqual(res.text, "3");
 		        return done();
 		      });
 	      });
