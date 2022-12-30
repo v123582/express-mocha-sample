@@ -13,7 +13,7 @@
     "node-fetch": "^2.6.0"
   },
   "devDependencies": {
-    "mocha": "^6.1.4",
+    "mocha": "^10.2.0",
     "sinon": "^7.3.2",
     "supertest": "^4.0.2"
   }
